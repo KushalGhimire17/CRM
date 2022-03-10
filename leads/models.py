@@ -1,4 +1,6 @@
 from django.db import models
+# from django.contrib.auth import get_user_model
+# User = get_user_model()
 from django.contrib.auth.models import AbstractUser
 
 
@@ -23,6 +25,8 @@ class Lead(models.Model):
 class Agent(models.Model):
     # every agent has one user
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    # matt_agent = Agent.objects.get(user__email="matt@justdjango.com") double underscore is used to access user model via agent model using model manager.
 
     def __str__(self):
         return self.user.username
